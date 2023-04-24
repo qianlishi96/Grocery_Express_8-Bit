@@ -1,0 +1,43 @@
+// initialize store, item, customers
+make_store,kroger,33000,2,1
+sell_item,kroger,pot_roast,5
+make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+make_customer,carli2,Chanel,Cortez,666-666-6666,4,100,2,4
+make_customer,olivia7,Olivia,Olson,999-999-9999,4,300,8,0
+make_customer,henry3,Henry,Horton,777-777-7777,2,200,7,6
+make_customer,gina3,Gina,Garcia,222-222-2222,3,500,5,4
+//
+// create general coupon (universal)
+// user input "make_general_coupon,id,discount,customerId,expirationDate"
+make_general_coupon,GC0001,5,aapple2,2023-05-21
+//
+// create store coupon (store-specific)
+// user input "make_general_coupon,id,discount,customerId,storeId,expirationDate"
+make_store_coupon,SC0001,5,aapple2,kroger,2023-05-21
+//
+// create item coupon (store&item-specific)
+// user input "make_general_coupon,id,discount,customerId,storeId,itemId,expirationDate"
+make_item_coupon,IC0001,5,aapple2,kroger,pot_roast,2023-05-21
+//
+// display coupons
+display_coupons
+//
+// create general coupon random (universal)
+// user input "make_general_coupon_random,winning_rate_per_rating,discount,expirationDate"
+make_general_coupon_random,10,5,2023-05-21
+//
+// create store coupon random (store-specific)
+// user input "make_store_coupon_random,winning_rate_per_rating,discount,storeId,expirationDate"
+make_store_coupon_random,10,5,kroger,2023-05-21
+//
+// create item coupon random (store&item-specific)
+// user input "make_item_coupon_random,winning_rate_per_rating,discount,storeId,itemId,expirationDate"
+make_item_coupon_random,10,5,kroger,pot_roast,2023-05-21
+//
+// display coupons
+display_coupons
+//
+// notify customer, using text message
+// user input "notify,customer,notification_message"
+notify,aapple2,Hello_customer...
+//

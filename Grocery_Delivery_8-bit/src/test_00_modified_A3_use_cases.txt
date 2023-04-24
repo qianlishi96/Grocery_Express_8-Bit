@@ -1,0 +1,16 @@
+// create store
+// updated user input "make_store,d,revenue,locationX,locationY"
+make_store,kroger,33000,2,1
+make_store,fresh_market,57000,9,5
+display_stores
+//
+// create customer
+// updated user input "make_customer,id,FName,LName,phone,rating,credits,locationX,locationY"
+make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+make_customer,carli2,Chanel,Cortez,666-666-6666,4,100,2,4
+make_customer,olivia7,Olivia,Olson,999-999-9999,4,300,8,0
+make_customer,henry3,Henry,Horton,777-777-7777,2,200,7,6
+make_customer,gina3,Gina,Garcia,222-222-2222,3,500,5,4
+make_customer,samuel11,Samuel,Schaefer,000-000-0000,1,400,11,0
+display_customers
+//

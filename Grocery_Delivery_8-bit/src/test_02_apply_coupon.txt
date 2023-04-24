@@ -1,0 +1,53 @@
+// initialize store, item, customer, order
+make_store,kroger,33000,2,1
+make_store,fresh_market,57000,9,5
+sell_item,kroger,pot_roast,5
+sell_item,kroger,cheesecake,4
+make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+make_customer,carli2,Chanel,Cortez,666-666-6666,4,100,2,4
+make_pilot,ffig8,Finneas,Fig,888-888-8888,890-12-3456,panam_10,33
+make_drone,kroger,kr1,40,3
+fly_drone,kroger,kr1,ffig8
+start_order,kroger,purchaseA,kr1,aapple2
+request_item,kroger,purchaseA,pot_roast,3,9
+display_orders,kroger
+//
+// initialize coupons
+// take system time for program time by default
+// today's date
+make_general_coupon,GC0001,5,aapple2,2023-05-21
+make_store_coupon,SC0001,5,aapple2,kroger,2023-05-21
+make_item_coupon,IC0001,5,aapple2,kroger,pot_roast,2023-05-21
+//
+// status check, display order and coupons
+display_orders,kroger
+display_coupons
+//
+// apply coupon
+// "apply_coupon,storeId,orderId,couponId"
+apply_coupon,kroger,purchaseA,GC0001
+display_orders,kroger
+apply_coupon,kroger,purchaseA,IC0001
+display_orders,kroger
+//
+// test bad coupons
+make_general_coupon,GC0002,5,carli2,2023-05-21
+apply_coupon,kroger,purchaseA,GC0002
+make_general_coupon,GC0003,5,aapple2,2023-03-21
+apply_coupon,kroger,purchaseA,GC0003
+make_item_coupon,IC0002,5,aapple2,kroger,cheesecake,2023-05-21
+apply_coupon,kroger,purchaseA,IC0002
+display_orders,kroger
+//
+// discount overflow
+make_general_coupon,GC0004,100,aapple2,2023-05-21
+apply_coupon,kroger,purchaseA,GC0004
+display_orders,kroger
+//
+// collab, coupon for absent customer
+// "update_date,yyyy-mm-dd"
+update_date,2023-08-23
+// "returning_customer_coupon,id,discount,customerId,expirationDate"
+returning_customer_coupon,GC0005,5,aapple2,2023-09-23
+notify,aapple2,so_it's_been_a_while...
+//

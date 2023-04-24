@@ -1,0 +1,57 @@
+// initialize map, order, storm
+make_store,kroger,33000,2,1
+make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+sell_item,kroger,pot_roast,5
+make_pilot,ffig8,Finneas,Fig,888-888-8888,890-12-3456,panam_10,33
+make_pilot,alan2,Alan,Alexander,111-111-1111,111-11-1111,lic_2,4
+make_drone,kroger,kr1,40,3
+make_drone,kroger,kr2,50,2
+fly_drone,kroger,kr1,ffig8
+fly_drone,kroger,kr2,alan2
+start_order,kroger,purchaseA,kr1,aapple2
+request_item,kroger,purchaseA,pot_roast,3,9
+purchase_order,kroger,purchaseA
+make_storm,st1,8,1,1,5
+make_storm,st2,7,8,3,5
+display_delivery_path,kroger,purchaseA
+//
+// track real time delivery
+start_delivery,kroger,purchaseA
+track_delivery,kroger,purchaseA,1
+track_delivery,kroger,purchaseA,2
+//
+// delay in delivery
+// "delivery_delay,storeId,orderId,time_delayed"
+delivery_delay,kroger,purchaseA,10
+//
+// continue, at time index 12
+track_delivery,kroger,purchaseA,12
+track_delivery,kroger,purchaseA,13
+track_delivery,kroger,purchaseA,14
+track_delivery,kroger,purchaseA,15
+//
+// drone stuck by storm, sev2 warning
+// "struck_by_storm,storeId,droneId"
+struck_by_storm,kroger,kr1
+track_delivery,kroger,purchaseA,16
+//
+// refill order, using a new drone
+// "refill_order,storeId,orderId,droneId,timePassed"
+refill_order,kroger,purchaseA,kr2,16
+//
+// restart delivery
+start_delivery,kroger,purchaseA
+track_delivery,kroger,purchaseA,17
+track_delivery,kroger,purchaseA,18
+//
+// status check, continue, status check
+track_delivery,kroger,purchaseA,24
+display_orders,kroger
+track_delivery,kroger,purchaseA,25
+display_stores
+display_customers
+display_orders,kroger
+track_delivery,kroger,purchaseA,26
+//
+// end
+//

@@ -1,0 +1,49 @@
+//
+// 01 - initialize map
+make_store,kroger,33000,2,1
+make_store,fresh_market,57000,9,5
+make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+make_customer,carli2,Chanel,Cortez,666-666-6666,4,100,2,4
+make_customer,olivia7,Olivia,Olson,999-999-9999,4,300,8,0
+make_customer,henry3,Henry,Horton,777-777-7777,2,200,7,6
+make_customer,gina3,Gina,Garcia,222-222-2222,3,500,5,4
+//
+// 02 - initialize order
+sell_item,kroger,pot_roast,5
+make_pilot,ffig8,Finneas,Fig,888-888-8888,890-12-3456,panam_10,33
+make_drone,kroger,kr1,40,3
+fly_drone,kroger,kr1,ffig8
+start_order,kroger,purchaseA,kr1,aapple2
+request_item,kroger,purchaseA,pot_roast,3,9
+purchase_order,kroger,purchaseA
+//
+// 03 - test grid map
+display_grid_map
+//
+// 04 - test storm, far
+make_storm,st1,8,1,1,5
+display_grid_map
+//
+// 05 - test delivery map, unaffected
+display_delivery_path,kroger,purchaseA
+//
+// 06 - test storm, near
+make_storm,st2,7,8,3,5
+display_grid_map
+//
+// 07 - test delivery map, affected
+display_delivery_path,kroger,purchaseA
+//
+// 08 - test real-time delivery map
+track_delivery,kroger,purchaseA,0
+track_delivery,kroger,purchaseA,1
+track_delivery,kroger,purchaseA,2
+track_delivery,kroger,purchaseA,3
+track_delivery,kroger,purchaseA,4
+track_delivery,kroger,purchaseA,5
+track_delivery,kroger,purchaseA,6
+track_delivery,kroger,purchaseA,7
+track_delivery,kroger,purchaseA,8
+track_delivery,kroger,purchaseA,9
+track_delivery,kroger,purchaseA,10
+//

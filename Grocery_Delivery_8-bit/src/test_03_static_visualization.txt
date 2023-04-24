@@ -1,0 +1,32 @@
+// empty map
+display_grid_map
+//
+// create store, customer
+make_store,kroger,33000,2,1
+make_store,fresh_market,57000,9,5
+make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+make_customer,carli2,Chanel,Cortez,666-666-6666,4,100,2,4
+make_customer,olivia7,Olivia,Olson,999-999-9999,4,300,8,0
+make_customer,henry3,Henry,Horton,777-777-7777,2,200,7,6
+make_customer,gina3,Gina,Garcia,222-222-2222,3,500,5,4
+//
+// test grid map
+display_grid_map
+//
+// create storm
+// "make_storm,stormId,center.X,center.Y,radius,intensity"
+make_storm,st1,8,1,1,5
+make_storm,st2,7,8,3,5
+display_storms
+//
+// test storm map
+display_grid_map
+//
+// update storm map
+// "update_storm,stormId,center.X,center.Y,radius,intensity"
+// "remove_storm,stormId"
+update_storm,st1,7,1,1,5
+remove_storm,st2
+display_storms
+display_grid_map
+//

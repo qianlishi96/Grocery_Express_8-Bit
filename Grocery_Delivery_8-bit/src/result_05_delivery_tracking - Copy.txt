@@ -1,0 +1,276 @@
+"C:\Users\Qianli Shi\.jdks\corretto-17.0.6\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.2\lib\idea_rt.jar=52273:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Users\Qianli Shi\Documents\GitHub\cs6310-A5_local\out\production\cs6310-A5;C:\Users\Qianli Shi\.m2\repository\com\googlecode\json-simple\json-simple\1.1.1\json-simple-1.1.1.jar;C:\Users\Qianli Shi\.m2\repository\junit\junit\4.10\junit-4.10.jar;C:\Users\Qianli Shi\.m2\repository\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar" Main
+Welcome to the Grocery Express Delivery Service!
+// initialize map, order, storm
+make_store,kroger,33000,2,1
+make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+sell_item,kroger,pot_roast,5
+make_pilot,ffig8,Finneas,Fig,888-888-8888,890-12-3456,panam_10,33
+make_drone,kroger,kr1,40,3
+fly_drone,kroger,kr1,ffig8
+start_order,kroger,purchaseA,kr1,aapple2
+request_item,kroger,purchaseA,pot_roast,3,9
+purchase_order,kroger,purchaseA
+make_storm,st1,8,1,1,5
+make_storm,st2,7,8,3,5
+display_delivery_path,kroger,purchaseA
+//
+// track real time delivery
+// "track_delivery,storeId,orderId,timeIndex"
+start_delivery,kroger,purchaseA
+track_delivery,kroger,purchaseA,1
+track_delivery,kroger,purchaseA,2
+track_delivery,kroger,purchaseA,3
+track_delivery,kroger,purchaseA,4
+track_delivery,kroger,purchaseA,5
+track_delivery,kroger,purchaseA,6
+track_delivery,kroger,purchaseA,7
+track_delivery,kroger,purchaseA,8
+//
+// status check
+//
+display_stores
+display_customers
+display_orders,kroger
+//
+// continue
+//
+track_delivery,kroger,purchaseA,9
+display_stores
+display_customers
+track_delivery,kroger,purchaseA,10
+//
+> // initialize map, order, storm
+> make_store,kroger,33000,2,1
+OK:change_completed
+> make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+OK:change_completed
+> sell_item,kroger,pot_roast,5
+OK:change_completed
+> make_pilot,ffig8,Finneas,Fig,888-888-8888,890-12-3456,panam_10,33
+OK:change_completed
+> make_drone,kroger,kr1,40,3
+OK:change_completed
+> fly_drone,kroger,kr1,ffig8
+OK:change_completed
+> start_order,kroger,purchaseA,kr1,aapple2
+OK:change_completed
+> request_item,kroger,purchaseA,pot_roast,3,9
+OK:change_completed
+> purchase_order,kroger,purchaseA
+OK:change_completed
+> make_storm,st1,8,1,1,5
+OK:change_completed
+> make_storm,st2,7,8,3,5
+OK:change_completed
+> display_delivery_path,kroger,purchaseA
+ALERT:delivery_path_overlaps_storm_st2
+ALERT:delivery_risk_quotient:15,estimated_eta_is:11.71
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> //
+> // track real time delivery
+> // "track_delivery,storeId,orderId,timeIndex"
+> start_delivery,kroger,purchaseA
+order_delivery_initiated
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · kr1 ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,1
+order_on_the_way
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · kr1 ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,2
+order_on_the_way
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · kr1 ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,3
+order_on_the_way
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · kr1 ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,4
+order_on_the_way
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · kr1 ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,5
+order_on_the_way
+ALERT:drone_in_storm_st2,check_drone_status
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░kr1░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,6
+order_on_the_way
+ALERT:drone_in_storm_st2,check_drone_status
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░kr1░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,7
+order_on_the_way
+ALERT:drone_in_storm_st2,check_drone_status
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░kr1░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,8
+order_on_the_way
+ALERT:drone_in_storm_st2,check_drone_status
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░kr1░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> //
+> // status check
+> //
+> display_stores
+name:kroger,revenue:33000,location:[2,1]
+OK:display_completed
+> display_customers
+name:Alana_Apple,phone:222-222-2222,rating:4,credit:100,location:[8,7]
+OK:display_completed
+> display_orders,kroger
+orderID:purchaseA
+item_name:pot_roast,total_quantity:3,total_cost:27,total_weight:15
+order_total_cost:27
+OK:display_completed
+> //
+> // continue
+> //
+> track_delivery,kroger,purchaseA,9
+order_delivered_at_time_8.49,processing_transaction
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░kr1░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> display_stores
+name:kroger,revenue:33027,location:[2,1]
+OK:display_completed
+> display_customers
+name:Alana_Apple,phone:222-222-2222,rating:4,credit:73,location:[8,7]
+OK:display_completed
+> track_delivery,kroger,purchaseA,10
+order_delivered_at_time_8.49,drone_returning,transaction_processed
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> //

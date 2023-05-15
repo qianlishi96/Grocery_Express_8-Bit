@@ -1,0 +1,144 @@
+"C:\Users\Qianli Shi\.jdks\corretto-17.0.6\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.2\lib\idea_rt.jar=52234:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Users\Qianli Shi\Documents\GitHub\cs6310-A5_local\out\production\cs6310-A5;C:\Users\Qianli Shi\.m2\repository\com\googlecode\json-simple\json-simple\1.1.1\json-simple-1.1.1.jar;C:\Users\Qianli Shi\.m2\repository\junit\junit\4.10\junit-4.10.jar;C:\Users\Qianli Shi\.m2\repository\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar" Main
+Welcome to the Grocery Express Delivery Service!
+// initialize store, item, customers
+make_store,kroger,33000,2,1
+sell_item,kroger,pot_roast,5
+make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+make_customer,carli2,Chanel,Cortez,666-666-6666,4,100,2,4
+make_customer,olivia7,Olivia,Olson,999-999-9999,4,300,8,0
+make_customer,henry3,Henry,Horton,777-777-7777,2,200,7,6
+make_customer,gina3,Gina,Garcia,222-222-2222,3,500,5,4
+//
+// today's date 2023-05-13
+// create general coupon (universal)
+// user input "make_general_coupon,id,discount,customerId,expirationDate"
+make_general_coupon,GC0001,5,aapple2,2023-06-13
+//
+// create store coupon (store-specific)
+// user input "make_general_coupon,id,discount,customerId,storeId,expirationDate"
+make_store_coupon,SC0001,5,aapple2,kroger,2023-06-13
+//
+// create item coupon (store&item-specific)
+// user input "make_general_coupon,id,discount,customerId,storeId,itemId,expirationDate"
+make_item_coupon,IC0001,5,aapple2,kroger,pot_roast,2023-06-13
+//
+// display coupons
+display_coupons
+//
+// create general coupon random (universal)
+// user input "make_general_coupon_random,winning_rate_per_rating,discount,expirationDate"
+make_general_coupon_random,10,5,2023-06-13
+//
+// create store coupon random (store-specific)
+// user input "make_store_coupon_random,winning_rate_per_rating,discount,storeId,expirationDate"
+make_store_coupon_random,10,5,kroger,2023-06-13
+//
+// create item coupon random (store&item-specific)
+// user input "make_item_coupon_random,winning_rate_per_rating,discount,storeId,itemId,expirationDate"
+make_item_coupon_random,10,5,kroger,pot_roast,2023-06-13
+//
+// display coupons
+display_coupons
+//
+// notify customer, using text message
+// user input "notify,customer,notification_message"
+notify,aapple2,Hello_customer...
+//
+// collab, coupon for absent customer
+// "update_date,yyyy-mm-dd"
+update_date,2023-09-06
+// "returning_customer_coupon,id,discount,customerId,expirationDate"
+returning_customer_coupon,GC0005,5,aapple2,2023-10-06
+notify,aapple2,so_it's_been_a_while...
+//> // initialize store, item, customers
+> make_store,kroger,33000,2,1
+OK:change_completed
+> sell_item,kroger,pot_roast,5
+OK:change_completed
+> make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+OK:change_completed
+> make_customer,carli2,Chanel,Cortez,666-666-6666,4,100,2,4
+OK:change_completed
+> make_customer,olivia7,Olivia,Olson,999-999-9999,4,300,8,0
+OK:change_completed
+> make_customer,henry3,Henry,Horton,777-777-7777,2,200,7,6
+OK:change_completed
+> make_customer,gina3,Gina,Garcia,222-222-2222,3,500,5,4
+OK:change_completed
+> //
+> // today's date 2023-05-13
+> // create general coupon (universal)
+> // user input "make_general_coupon,id,discount,customerId,expirationDate"
+> make_general_coupon,GC0001,5,aapple2,2023-06-13
+OK:change_completed
+OK:txt_message_sent,customer_notified
+> //
+> // create store coupon (store-specific)
+> // user input "make_general_coupon,id,discount,customerId,storeId,expirationDate"
+> make_store_coupon,SC0001,5,aapple2,kroger,2023-06-13
+OK:change_completed
+OK:txt_message_sent,customer_notified
+> //
+> // create item coupon (store&item-specific)
+> // user input "make_general_coupon,id,discount,customerId,storeId,itemId,expirationDate"
+> make_item_coupon,IC0001,5,aapple2,kroger,pot_roast,2023-06-13
+OK:change_completed
+OK:txt_message_sent,customer_notified
+> //
+> // display coupons
+> display_coupons
+CouponId:GC0001,Discount:$5,customer:Alana_Apple,expiration:2023-06-13
+CouponId:IC0001,Discount:$5,customer:Alana_Apple,store:kroger,item:pot_roast,expiration:2023-06-13
+CouponId:SC0001,Discount:$5,customer:Alana_Apple,store:kroger,expiration:2023-06-13
+OK:display_completed
+> //
+> // create general coupon random (universal)
+> // user input "make_general_coupon_random,winning_rate_per_rating,discount,expirationDate"
+> make_general_coupon_random,10,5,2023-06-13
+Generated_2_new_coupons
+OK:change_completed
+OK:txt_message_sent,customer_notified
+> //
+> // create store coupon random (store-specific)
+> // user input "make_store_coupon_random,winning_rate_per_rating,discount,storeId,expirationDate"
+> make_store_coupon_random,10,5,kroger,2023-06-13
+Generated_2_new_coupons
+OK:change_completed
+OK:txt_message_sent,customer_notified
+> //
+> // create item coupon random (store&item-specific)
+> // user input "make_item_coupon_random,winning_rate_per_rating,discount,storeId,itemId,expirationDate"
+> make_item_coupon_random,10,5,kroger,pot_roast,2023-06-13
+Generated_3_new_coupons
+OK:change_completed
+OK:txt_message_sent,customer_notified
+> //
+> // display coupons
+> display_coupons
+CouponId:GC0001,Discount:$5,customer:Alana_Apple,expiration:2023-06-13
+CouponId:GCR0000,Discount:$5,customer:Chanel_Cortez,expiration:2023-06-13
+CouponId:GCR0001,Discount:$5,customer:Olivia_Olson,expiration:2023-06-13
+CouponId:IC0001,Discount:$5,customer:Alana_Apple,store:kroger,item:pot_roast,expiration:2023-06-13
+CouponId:ICR0004,Discount:$5,customer:Alana_Apple,store:kroger,item:pot_roast,expiration:2023-06-13
+CouponId:ICR0005,Discount:$5,customer:Chanel_Cortez,store:kroger,item:pot_roast,expiration:2023-06-13
+CouponId:ICR0006,Discount:$5,customer:Gina_Garcia,store:kroger,item:pot_roast,expiration:2023-06-13
+CouponId:SC0001,Discount:$5,customer:Alana_Apple,store:kroger,expiration:2023-06-13
+CouponId:SCR0002,Discount:$5,customer:Chanel_Cortez,store:kroger,expiration:2023-06-13
+CouponId:SCR0003,Discount:$5,customer:Olivia_Olson,store:kroger,expiration:2023-06-13
+OK:display_completed
+> //
+> // notify customer, using text message
+> // user input "notify,customer,notification_message"
+> notify,aapple2,Hello_customer...
+OK:txt_message_sent,customer_notified
+> //
+> // collab, coupon for absent customer
+> // "update_date,yyyy-mm-dd"
+> update_date,2023-09-06
+OK:change_completed
+> // "returning_customer_coupon,id,discount,customerId,expirationDate"
+> returning_customer_coupon,GC0005,5,aapple2,2023-10-06
+OK:change_completed
+OK:txt_message_sent,customer_notified
+> notify,aapple2,so_it's_been_a_while...
+OK:txt_message_sent,customer_notified

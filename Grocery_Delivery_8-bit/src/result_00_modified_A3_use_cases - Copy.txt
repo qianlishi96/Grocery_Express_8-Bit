@@ -1,0 +1,51 @@
+"C:\Users\Qianli Shi\.jdks\corretto-17.0.6\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.2\lib\idea_rt.jar=52204:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Users\Qianli Shi\Documents\GitHub\cs6310-A5_local\out\production\cs6310-A5;C:\Users\Qianli Shi\.m2\repository\com\googlecode\json-simple\json-simple\1.1.1\json-simple-1.1.1.jar;C:\Users\Qianli Shi\.m2\repository\junit\junit\4.10\junit-4.10.jar;C:\Users\Qianli Shi\.m2\repository\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar" Main
+Welcome to the Grocery Express Delivery Service!
+// create store
+// updated user input "make_store,d,revenue,locationX,locationY"
+make_store,kroger,33000,2,1
+make_store,fresh_market,57000,9,5
+display_stores
+//
+// create customer
+// updated user input "make_customer,id,FName,LName,phone,rating,credits,locationX,locationY"
+make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+make_customer,carli2,Chanel,Cortez,666-666-6666,4,100,2,4
+make_customer,olivia7,Olivia,Olson,999-999-9999,4,300,8,0
+make_customer,henry3,Henry,Horton,777-777-7777,2,200,7,6
+make_customer,gina3,Gina,Garcia,222-222-2222,3,500,5,4
+make_customer,samuel11,Samuel,Schaefer,000-000-0000,1,400,11,0
+display_customers
+//
+> // create store
+> // updated user input "make_store,d,revenue,locationX,locationY"
+> make_store,kroger,33000,2,1
+OK:change_completed
+> make_store,fresh_market,57000,9,5
+OK:change_completed
+> display_stores
+name:fresh_market,revenue:57000,location:[9,5]
+name:kroger,revenue:33000,location:[2,1]
+OK:display_completed
+> //
+> // create customer
+> // updated user input "make_customer,id,FName,LName,phone,rating,credits,locationX,locationY"
+> make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+OK:change_completed
+> make_customer,carli2,Chanel,Cortez,666-666-6666,4,100,2,4
+OK:change_completed
+> make_customer,olivia7,Olivia,Olson,999-999-9999,4,300,8,0
+OK:change_completed
+> make_customer,henry3,Henry,Horton,777-777-7777,2,200,7,6
+OK:change_completed
+> make_customer,gina3,Gina,Garcia,222-222-2222,3,500,5,4
+OK:change_completed
+> make_customer,samuel11,Samuel,Schaefer,000-000-0000,1,400,11,0
+ERROR:location_out_of_the_map
+> display_customers
+name:Alana_Apple,phone:222-222-2222,rating:4,credit:100,location:[8,7]
+name:Chanel_Cortez,phone:666-666-6666,rating:4,credit:100,location:[2,4]
+name:Gina_Garcia,phone:222-222-2222,rating:3,credit:500,location:[5,4]
+name:Henry_Horton,phone:777-777-7777,rating:2,credit:200,location:[7,6]
+name:Olivia_Olson,phone:999-999-9999,rating:4,credit:300,location:[8,0]
+OK:display_completed
+> //

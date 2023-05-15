@@ -1,0 +1,343 @@
+"C:\Users\Qianli Shi\.jdks\corretto-17.0.6\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.2\lib\idea_rt.jar=52293:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Users\Qianli Shi\Documents\GitHub\cs6310-A5_local\out\production\cs6310-A5;C:\Users\Qianli Shi\.m2\repository\com\googlecode\json-simple\json-simple\1.1.1\json-simple-1.1.1.jar;C:\Users\Qianli Shi\.m2\repository\junit\junit\4.10\junit-4.10.jar;C:\Users\Qianli Shi\.m2\repository\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar" Main
+Welcome to the Grocery Express Delivery Service!
+// initialize map, order, storm
+make_store,kroger,33000,2,1
+make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+sell_item,kroger,pot_roast,5
+make_pilot,ffig8,Finneas,Fig,888-888-8888,890-12-3456,panam_10,33
+make_pilot,alan2,Alan,Alexander,111-111-1111,111-11-1111,lic_2,4
+make_drone,kroger,kr1,40,3
+make_drone,kroger,kr2,50,2
+fly_drone,kroger,kr1,ffig8
+fly_drone,kroger,kr2,alan2
+start_order,kroger,purchaseA,kr1,aapple2
+request_item,kroger,purchaseA,pot_roast,3,9
+purchase_order,kroger,purchaseA
+make_storm,st1,8,1,1,5
+make_storm,st2,7,8,3,5
+display_delivery_path,kroger,purchaseA
+//
+// track real time delivery
+start_delivery,kroger,purchaseA
+track_delivery,kroger,purchaseA,1
+track_delivery,kroger,purchaseA,2
+//
+// delay in delivery
+// "delivery_delay,storeId,orderId,time_delayed"
+delivery_delay,kroger,purchaseA,10
+//
+// continue, at time index 12
+track_delivery,kroger,purchaseA,12
+track_delivery,kroger,purchaseA,13
+track_delivery,kroger,purchaseA,14
+track_delivery,kroger,purchaseA,15
+//
+// drone stuck by storm, sev2 warning
+// "struck_by_storm,storeId,droneId"
+struck_by_storm,kroger,kr1
+track_delivery,kroger,purchaseA,16
+//
+// refill order, using a new drone
+// "refill_order,storeId,orderId,droneId,timePassed"
+refill_order,kroger,purchaseA,kr2,16
+//
+// restart delivery
+start_delivery,kroger,purchaseA
+track_delivery,kroger,purchaseA,17
+track_delivery,kroger,purchaseA,18
+//
+// status check, continue, status check
+track_delivery,kroger,purchaseA,24
+display_orders,kroger
+track_delivery,kroger,purchaseA,25
+display_stores
+display_customers
+display_orders,kroger
+track_delivery,kroger,purchaseA,26
+//
+// end
+//> // initialize map, order, storm
+> make_store,kroger,33000,2,1
+OK:change_completed
+> make_customer,aapple2,Alana,Apple,222-222-2222,4,100,8,7
+OK:change_completed
+> sell_item,kroger,pot_roast,5
+OK:change_completed
+> make_pilot,ffig8,Finneas,Fig,888-888-8888,890-12-3456,panam_10,33
+OK:change_completed
+> make_pilot,alan2,Alan,Alexander,111-111-1111,111-11-1111,lic_2,4
+OK:change_completed
+> make_drone,kroger,kr1,40,3
+OK:change_completed
+> make_drone,kroger,kr2,50,2
+OK:change_completed
+> fly_drone,kroger,kr1,ffig8
+OK:change_completed
+> fly_drone,kroger,kr2,alan2
+OK:change_completed
+> start_order,kroger,purchaseA,kr1,aapple2
+OK:change_completed
+> request_item,kroger,purchaseA,pot_roast,3,9
+OK:change_completed
+> purchase_order,kroger,purchaseA
+OK:change_completed
+> make_storm,st1,8,1,1,5
+OK:change_completed
+> make_storm,st2,7,8,3,5
+OK:change_completed
+> display_delivery_path,kroger,purchaseA
+ALERT:delivery_path_overlaps_storm_st2
+ALERT:delivery_risk_quotient:15,estimated_eta_is:11.71
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> //
+> // track real time delivery
+> start_delivery,kroger,purchaseA
+order_delivery_initiated
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · kr1 ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,1
+order_on_the_way
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · kr1 ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,2
+order_on_the_way
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · kr1 ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> //
+> // delay in delivery
+> // "delivery_delay,storeId,orderId,time_delayed"
+> delivery_delay,kroger,purchaseA,10
+OK:change_completed
+> //
+> // continue, at time index 12
+> track_delivery,kroger,purchaseA,12
+order_on_the_way
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · kr1 ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,13
+order_on_the_way
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · kr1 ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,14
+order_on_the_way
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · kr1 ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,15
+order_on_the_way
+ALERT:drone_in_storm_st2,check_drone_status
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░kr1░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> //
+> // drone stuck by storm, sev2 warning
+> // "struck_by_storm,storeId,droneId"
+> struck_by_storm,kroger,kr1
+WARNING:drone_struck_by_storm,prepare_new_delivery_immediately
+> track_delivery,kroger,purchaseA,16
+ERROR:unable_to_track,drone_struck_by_storm,prepare_new_delivery
+> //
+> // refill order, using a new drone
+> // "refill_order,storeId,orderId,droneId,timePassed"
+> refill_order,kroger,purchaseA,kr2,16
+OK:change_completed
+> //
+> // restart delivery
+> start_delivery,kroger,purchaseA
+order_delivery_initiated
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · kr2 ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,17
+order_on_the_way
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · kr2 ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> track_delivery,kroger,purchaseA,18
+order_on_the_way
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · kr2 ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> //
+> // status check, continue, status check
+> track_delivery,kroger,purchaseA,24
+order_on_the_way
+ALERT:drone_in_storm_st2,check_drone_status
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░kr2░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> display_orders,kroger
+orderID:purchaseA
+item_name:pot_roast,total_quantity:3,total_cost:27,total_weight:15
+order_total_cost:27
+OK:display_completed
+> track_delivery,kroger,purchaseA,25
+order_delivered_at_time_24.49,late_discount_applied,processing_transaction
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░kr2░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> display_stores
+name:kroger,revenue:33017,location:[2,1]
+OK:display_completed
+> display_customers
+name:Alana_Apple,phone:222-222-2222,rating:4,credit:83,location:[8,7]
+OK:display_completed
+> display_orders,kroger
+orderID:purchaseA
+item_name:pot_roast,total_quantity:3,total_cost:27,total_weight:15
+order_total_value:27,order_total_discount:10,order_total_cost:17
+OK:display_completed
+> track_delivery,kroger,purchaseA,26
+order_delivered_at_time_24.49,drone_returning,transaction_processed
+ ╔══╤══╤══╤══╤══╤══╤══╤══╤══╤══╤══╗ 
+ ╟─ ·  ·  ·  ·  ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  · KRO ·  ·  ·  · ░░░st1░░░─╢ 
+ ╟─ ·  ·  · ███ ·  ·  · ░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ███ ·  ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  ·  · ███ ·  ·  ·  · ─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░███░░░░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░███░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░aap░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░st2░░░░░░─╢ 
+ ╟─ ·  ·  ·  · ░░░░░░░░░░░░░░░░░░─╢ 
+ ╚══╧══╧══╧══╧══╧══╧══╧══╧══╧══╧══╝ 
+OK:display_completed
+> //
+> // end
